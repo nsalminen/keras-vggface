@@ -10,7 +10,7 @@ from keras_vggface.models import RESNET50, VGG16, SENET50
 
 
 def VGGFace(include_top=True, model='vgg16', weights='vggface',
-            input_tensor=None, input_shape=None,
+            load_weights=True, input_tensor=None, input_shape=None,
             pooling=None,
             classes=None):
     """Instantiates the VGGFace architectures.
@@ -28,6 +28,7 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface',
             layers at the top of the network.
         weights: one of `None` (random initialization)
             or "vggface" (pre-training on VGGFACE datasets).
+        load_weights: whether to load the network weights on initilization
         input_tensor: optional Keras tensor (i.e. output of `layers.Input()`)
             to use as image input for the model.
         model: selects the one of the available architectures 
@@ -77,7 +78,7 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface',
 
         return VGG16(include_top=include_top, input_tensor=input_tensor,
                      input_shape=input_shape, pooling=pooling,
-                     weights=weights,
+                     weights=weights, load_weights=load_weights,
                      classes=classes)
 
 
@@ -93,7 +94,7 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface',
 
         return RESNET50(include_top=include_top, input_tensor=input_tensor,
                         input_shape=input_shape, pooling=pooling,
-                        weights=weights,
+                        weights=weights, load_weights=load_weights,
                         classes=classes)
 
     if model == 'senet50':
@@ -108,5 +109,5 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface',
 
         return SENET50(include_top=include_top, input_tensor=input_tensor,
                         input_shape=input_shape, pooling=pooling,
-                        weights=weights,
+                        weights=weights, load_weights=load_weights,
                         classes=classes)
